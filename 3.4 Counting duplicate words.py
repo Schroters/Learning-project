@@ -1,4 +1,5 @@
 # https://stepik.org/lesson/3363/step/3?unit=1135
+# https://stepik.org/lesson/3373/step/6?unit=956
 # Counting duplicate words in a file (Подсчет повторяющихся слов в файле)
 s, d = str(), dict()
 
