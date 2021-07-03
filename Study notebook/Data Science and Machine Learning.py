@@ -189,6 +189,10 @@ print(mean_scores_multi.loc[[('female', 'group A'), ('female', 'group B')]])
 print(students_perfomance.math_score.unique())  # просто уникальные значения
 print(students_perfomance.math_score.nunique()) # число уникальных значений
 # Результат - сгруппированная серия - одномерный массив с информацией о группировке по двум переменным
+
+print(events_data.groupby('day').user_id.nunique().head())      # сколько уникальных пользователей в день
+events_data.groupby('day').user_id.nunique().plot(figsize=(20,10))  # что бы не смотреть в таблице рисуем график просто заменив head() на plot() а figsize=(20,10) что бы размер адекватным был
+
 print(students_perfomance.groupby(['gender', 'race/ethnicity']).math_score.nunique())
 # топ пять девушек по матемматике
 print(students_perfomance.sort_values(['gender', 'math_score']))    # сортировка pandas от меньшего к большему
@@ -260,15 +264,15 @@ print(events_data[events_data.action == 'passed'] \
       .agg({'step_id': 'count'}) \
       .rename(columns={'step_id':'passed_steps'}).head())
 # Вывод графика
-# events_data[events_data.action == 'passed'] \
-#     .groupby('user_id', as_index=False) \
-#     .agg({'step_id': 'count'}) \
-#     .rename(columns={'step_id':'passed_steps'}).passed_steps.hist()
+events_data[events_data.action == 'passed'] \
+    .groupby('user_id', as_index=False) \
+    .agg({'step_id': 'count'}) \
+    .rename(columns={'step_id':'passed_steps'}).passed_steps.hist()
 # Вот тут видим, что потерлось значение НОЛЬ хотя по идее должны быть пользователи, которые не решили не единого степа
-# print(events_data[events_data.action == 'passed'] \
-#       .groupby('user_id', as_index=False) \
-#       .agg({'step_id': 'count'}) \
-#       .rename(columns={'step_id':'passed_steps'}).min())
+print(events_data[events_data.action == 'passed'] \
+      .groupby('user_id', as_index=False) \
+      .agg({'step_id': 'count'}) \
+      .rename(columns={'step_id':'passed_steps'}).min())
 
 # 2 способ если без решений ставим ноль, а не пропускаем
 print(events_data.pivot_table(index='user_id', columns='action', values='step_id', aggfunc='count', fill_value=0).reset_index().head())
@@ -358,7 +362,7 @@ events_data['day'] = events_data.date.dt.date           # добавили ко�
 
 submissions_data['date'] = pd.to_datetime(submissions_data.timestamp, unit = 's')
 submissions_data['day'] = submissions_data.date.dt.date
-
+events_data['month'] = events_data['date'].dt.month     #из даты берем месяц, аналогично year, можно их же и объединить
 
 #-----
 
