@@ -418,6 +418,19 @@ gap_data = pd.Series(np.hstack(gap_data))
 # теперь в пандовской серии сохранены для каждого пользователя значения разницы двумя захода на курс
 
 
+# стоит еще поделить на день
+gap_data = gap_data / (24 * 60 * 60)
+
+print(gap_data.quantile([0.95]))  # только 5% возвращается спустя 2 месяца
+print(gap_data.quantile([0.9]))   # 90% возвращается спустя 18 дней, 10% более чем через 18 дней
+
+drop_out_treshold = 30 * 24 * 60 * 60   # не было 30 дней, значит дропнувшийся
+mx_timestamp = 1526772811               # максимальное время
+action_passed = 198                     # количество сданных заданий максимально Снизу график(можно в вывод)
+# events_data[events_data.action == 'passed'].groupby('user_id', as_index=False).agg({'step_id': 'count'}).sort_values(by='step_id').step_id.hist()
+
+
+
 #-----
 
 
