@@ -430,6 +430,19 @@ action_passed = 198                     # количество сданных з
 # events_data[events_data.action == 'passed'].groupby('user_id', as_index=False).agg({'step_id': 'count'}).sort_values(by='step_id').step_id.hist()
 
 
+print(submissions_data[submissions_data.submission_status == 'correct'].groupby('user_id').agg({'submission_status': 'count'}).sort_values(by=['submission_status'], ascending=False).head(3))
+# отобрали корректные значения, отгрупировали по id, посчитали сколько правильных решений, отсортировали в обратную сторону по колво правильных решений
+
+
+all_set_events = events_data[events_data.action == 'passed'].groupby('user_id', as_index=False).agg({'step_id': 'count'}).rename(columns={'step_id': 'passed_steps'}).query('passed_steps == 198')
+# посчитали в колонке правильные решения, дальше составили список с id, переименовали и в итоге оставили только с 198
+# all_set_submis = submissions_data[submissions_data.submission_status == 'wrong'].groupby('user_id', as_index=False).agg({'step_id': 'count'}).rename(columns={'step_id': 'passed_steps'}).sort_values(by='passed_steps')
+
+search_teacher_id = events_data.groupby('user_id', as_index=False).sum()    # сумировали для каждого id его показатели времени
+# search_teacher_id = search_teacher_id.sort_values(by='timestamp')
+
+
+
 
 #-----
 
