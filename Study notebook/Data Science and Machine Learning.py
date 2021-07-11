@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt     # для визуализации
 import seaborn as sns               # для визуализации
 # https://seaborn.pydata.org/generated/seaborn.violinplot.html
 from sklearn import tree            # для обучения решающих деревьев и использовать их для предсказания, обучения моделей и т.д.
+from scipy.stats import entropy     # для подсчета энтропии
 
 
 pd.set_option('display.max_columns', 20)    # далее три строки для того, что бы вывод не сжимался можно NONE
@@ -29,7 +30,9 @@ iris = pd.read_csv('table/iris.csv')
 my_stat_old = pd.read_csv('table/my_stat.csv')
 my_stat = pd.read_csv('table/my_stat_1.csv')
 events_data = pd.read_csv('table/event_data_train.zip')     # открытие из архива
+pets_2 = pd.read_csv('table/dogs.csv')
 submissions_data = pd.read_csv('table/submissions_data_train.zip')
+pets = pd.read_csv('table/cats.csv')
 # events_train.csv - данные о действиях, которые совершают студенты со стэпами
 # 1. step_id - id стэпа                         # 198
 # 2. user_id - анонимизированный id юзера       # 19234
@@ -145,6 +148,12 @@ print(dota[dota['legs'] == 8].shape[0])                     # подсчет с�
 print(dota['legs'].value_counts())                          # подсчет сколько героев с восьмю ногами
 print(dota.aggregate({'legs': 'value_counts'}).sort_index())    # подсчет сколько героев с восьмю ногами КРАСИВО
 print(dota.groupby('legs').count())                         # подсчет сколько героев с восьмю ногами
+
+print('Число колонок в представленном датафрэйме', titanik_t.shape[1],
+      ', а число строк', titanik_t.shape[0],
+      'Тип float имеют', titanik_t.dtypes[titanik_t.dtypes=='float64'].count(), 'колонки,',
+      'int -', titanik_t.dtypes[titanik_t.dtypes=='int64'].count(),
+      ', и object', titanik_t.dtypes[titanik_t.dtypes=='object'].count())
 #-----
 
 
@@ -596,18 +605,81 @@ clf.fit(X, y)
 # дерево решений обучили
 
 # лучшая проверка обучили ли дерево, это визуализация
-# graph = Source(tree.export_graphviz(clf, out_file=None,
-#                                     feature_names=list(X),
-#                                     class_names=['Negative', 'Positive'],
-#                                     filled=True))
-#
-# display(SVG(graph.pipe(format='svg')))
 
 tree.plot_tree(clf)     # нарисавать "стандартными" способами простое одноцветное дерево
 tree.plot_tree(clf, feature_names=list(X),
                class_names=['Negative', 'Positive'],
                filled=True)     # не много расскрасить
 
+
+
+pets_1 = pets_1.drop('Unnamed: 0', axis=1)  # удалили не нужный столбец, что бы в графике не было Unnamed, а было гавкает
+pets_X = pets_1.iloc[:, :3]   # первые три столбца, то с помощью чего обучились
+pets_y = pets_1.iloc[:, 3]    # то что пытаемся предсказать
+pets_clf = tree.DecisionTreeClassifier(criterion='entropy', random_state=0)  # сделали дерево
+pets_clf.fit(pets_X, pets_y)        # фичи в Х с помощью которых обучаемся в у что предсказываем
+tree.plot_tree(pets_clf, feature_names=pets_X.columns)      # вызвали показ дерева
+
+
+
+print('Подсчет Энтропии')
+print('Способ 1')
+def split(df, col):
+    '''Разделяем датафрейм на 2 части, в первой значение col == 0, во второй col == 1 '''
+    return df[df[col] == 0], df[df[col] == 1]
+
+def entropy(df, ycol):
+    # Энтропия значений столбца ycol (Вид) для одного датафрейма
+    p = df[ycol].value_counts() / df[ycol].size # Series с вероятностями каждого исхода
+    return round(-np.sum(p * np.log2(p)), 2)    # Умножаем на лог2, складываем
+
+ycol = 'Вид'
+for col in pets.columns[:3]:
+    t0, t1 = split(pets, col)
+    print(col, entropy(t0, ycol), entropy(t1, ycol))
+
+
+print('Подсчет Энтропии')
+print('Способ 2')
+def calc_entropy(x, column, need):
+    cnt_0, cnt_1, cnt_all = 0, 0, 0
+    for i in range(len(x)):
+        if x.iloc[i][column] != need:
+            continue
+
+        cnt_all += 1
+        cnt_0 += x.iloc[i].Вид == 'собачка'
+        cnt_1 += x.iloc[i].Вид == 'котик'
+
+    if cnt_0 == 0 or cnt_1 == 0:
+        return 0
+    return -1 * ((cnt_0 / cnt_all) * np.log2(cnt_0 / cnt_all) + (cnt_1 / cnt_all) * np.log2(cnt_1 / cnt_all))
+
+
+for j in ['Шерстист', 'Гавкает', 'Лазает по деревьям']:
+    print(j, ': ', sep='', end='')
+    for i in [0, 1]:
+        print(calc_entropy(pets, j, i), end=' ')
+    print()
+
+
+
+print('\n посчитаем Information Gain')
+def ent(data):
+    return entropy(data.Вид.value_counts() / len(data), base=2)
+
+def ig(data, feature):
+    ent0 = ent(data[data[feature] == 0])
+    ent1 = ent(data[data[feature] == 1])
+    n = len(data)
+    n0 = len(data[data[feature] == 0])
+    n1 = len(data[data[feature] == 1])
+    return ent(data) - ent0 * n0 / n - ent1 * n1 / n
+
+
+print('IG по шертистости: ', round(ig(pets, 'Шерстист'), 2))
+print('IG по голосу: ', round(ig(pets, 'Гавкает'), 2))
+print('IG по деревьям: ', round(ig(pets, 'Лазает по деревьям'), 2))
 
 # отображение графика
 plt.show()
