@@ -11,7 +11,8 @@ from scipy.stats import entropy     # для подсчета энтропии
 pd.set_option('display.max_columns', 20)    # далее три строки для того, что бы вывод не сжимался можно NONE
 pd.set_option('display.max_rows', 1200)
 pd.set_option('display.width', 200)
-#plt.rcParams["figure.figsize"] = (30, 3) # (w, h) Что бы квадраты при рисовании делева не наезжали друг на друга ретина
+#plt.rcParams["figure.figsize"] = (30, 3)
+# (w, h) Что бы квадраты при рисовании делева не наезжали друг на друга ретина
 plt.figure(figsize=(30, 3))         # еще способ тот же самый, что и выше
 
 students_perfomance = pd.read_csv('table/StudentsPerformance.csv')
@@ -57,9 +58,9 @@ students_perfomance_with_names.index = ['Cersey', 'Tywin', 'Gregor', 'Joffrey', 
 my_series1 = pd.Series([1, 2, 3])   # создали серию
 my_series1 = pd.Series([1, 2, 3], index=['Cersey', 'Tywin', 'Gregor'])
 my_series2 = pd.Series([4, 5, 6], index=['Cersey', 'Tywin', 'Gregor'])
-my_dataframe = pd.DataFrame({'col_name_1':my_series1, 'col name 2':my_series2})     # создали датафрейм из серий
-diab = {'type' : ['A', 'A', 'B', 'B',], 'value' : [10, 14, 12, 23]}     # словарь из него легко создать датафрейм
-my_data_frame = pd.DataFrame({'type' : ['A', 'A', 'B', 'B'], 'value': [10, 14, 12, 23]})
+my_dataframe = pd.DataFrame({'col_name_1': my_series1, 'col name 2': my_series2})     # создали датафрейм из серий
+diab = {'type': ['A', 'A', 'B', 'B'], 'value': [10, 14, 12, 23]}     # словарь из него легко создать датафрейм
+my_data_frame = pd.DataFrame({'type': ['A', 'A', 'B', 'B'], 'value': [10, 14, 12, 23]})
 # либо сразу словарь в датафрейме
 
 #-----
@@ -82,7 +83,6 @@ print(students_perfomance_with_names.iloc[:, 0])    # отображение с�
 # А выражение df.iloc[:6] затронет все индексы от начала и до компонента 6, не включая шестерку: [0, 1, 2, 3, 4, 5]
 print(students_perfomance_with_names['gender'])    # получим просто серию (возьми то что лежит по значению гендер)
 print(students_perfomance_with_names[['gender']])  # получим датафрейм (возьми от всего датафрейма только первую колонку)
-print(students_perfomance_with_names['gender'])    # будет просто пять, а тут размер списка
 print(students_perfomance_with_names[['gender']].shape)     # будет 5 строчек и 1 столбец
 
 # В переменную с именем subset_1 сохраните только первые 10 строк и только 1 и 3 колонку.
@@ -120,7 +120,7 @@ subset_2 = my_stat_old.query("V2 != 10 | V4 >= 1")  # сохранить в но
 wrat_scor_quer = 99 # если с переменной, то есть @
 print(students_perfomance.query("writing_score > @wrat_scor_quer & gender == 'female'"))  # если с переменной, то @
 
-# создали список столбцов в которых есть слове score
+# создали список столбцов в которых есть слово score
 score_columns = [i for i in list(students_perfomance) if 'score' in i]
 print(students_perfomance[score_columns].head())  # вывод столбцов только с score
 # 2
@@ -361,7 +361,7 @@ print(students_perfomance.head())
 my_stat_old['V5'] = my_stat_old.V1 + my_stat_old.V4     # в новой колонке сумма двух других
 my_stat_old['V6'] = np.log(my_stat_old.V2)          # натуральный логарифм переменной V2
 # тоже самое что и выше В5 и В6
-my_stat_old=my_stat_old.assign(V5 =my_stat_old.V1 + my_stat_old.V4, V6 = np.log(my_stat_old.V2))
+my_stat_old=my_stat_old.assign(V5=my_stat_old.V1 + my_stat_old.V4, V6=np.log(my_stat_old.V2))
 
 # Второй способ, в котором можно несколько колонок создать, применяем логорифм к тоталскор
 students_perfomance = students_perfomance.assign(total_score_log=np.log(students_perfomance.total_score))
@@ -391,7 +391,7 @@ submissions_data['date'] = pd.to_datetime(submissions_data.timestamp, unit = 's'
 submissions_data['day'] = submissions_data.date.dt.date
 events_data['month'] = events_data['date'].dt.month     #из даты берем месяц, аналогично year, можно их же и объединить
 
-
+#### GDE TO TUT
 # подсчитаем для кадого юзера сколько у него было анных для которого правильно ответ
 users_scores = submissions_data.pivot_table(index='user_id',
                                             columns='submission_status',
