@@ -8,10 +8,10 @@
 def dirReduc(a):
     starr = " ".join(a)
     starr_repl = starr.replace("NORTH SOUTH", '').replace("SOUTH NORTH", '') \
-        .replace("EAST WEST", '').replace("WEST EAST", '')      # замена значений, на пустоту
+        .replace("EAST WEST", '').replace("WEST EAST", '')      # замена значений на пустоту
     starr_splt = starr_repl.split()     # новый список
     if len(starr_splt) < len(a):
-        # каждый раз возвращает на повтор, и если вернул и не поменялось, то возвращаем значение
+        # каждый раз возвращает на повтор и если вернул и не поменялось возвращаем значение
         return dirReduc(starr_splt)
 
     else:
