@@ -12,20 +12,20 @@ class Solution(object):
             if nums[0] == 1:
                 return 1
         max_count, new_count = 0, 1     # два счетчика
-        count_for = 1       # счетчик для фора
+        count_for = 1       # счетчик for
         for i in nums:
             if count_for < len(nums):
                 if i == 1:      # если i = 1
                     if i == nums[count_for]:
                         new_count += 1
                     else:
-                        if new_count >= max_count:  # если новые повторюшкин больше или равен максимальному
+                        if new_count >= max_count:  # если новые повтор больше или равен максимальному
                             max_count = new_count   # то передаем значение
                         new_count = 1           # и обнуляем
                 count_for +=1
 
             # сверить последние повторения
-            if new_count >= max_count:  # если новые повторюшкин больше или равен максимальному
+            if new_count >= max_count:  # если новые повторю больше или равен максимальному
                 max_count = new_count   # то передаем значение
         return max_count
 
