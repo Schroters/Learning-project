@@ -25,11 +25,11 @@ class Solution(object):
                     del arr[-1]
 
 
-newTest1, nT1 = Solution(), [1, 0, 2, 3, 0, 4, 5, 0]
-newTest1.duplicateZeros(nT1)
-print(nT1)      # [1,0,0,2,3,0,0,4]
+newTest1, newTest1List = Solution(), [1, 0, 2, 3, 0, 4, 5, 0]
+newTest1.duplicateZeros(newTest1List)
+print(newTest1List)      # [1,0,0,2,3,0,0,4]
 
-newTest2, nT2 = Solution(), [1, 2, 3]
-newTest2.duplicateZeros(nT2)
-print(nT2)
+newTest2, newTest2List = Solution(), [1, 2, 3]
+newTest2.duplicateZeros(newTest2List)
+print(newTest2List)
 
