@@ -17,20 +17,10 @@ class Solution(object):
             noduplicates.sort()
             return noduplicates[-3]
 
-newTest1 = Solution()
-print(newTest1.thirdMax([3, 2, 1]))  # 1
 
-newTest2 = Solution()
-print(newTest2.thirdMax([1, 2]))    # 2
-
-newTest3 = Solution()
-print(newTest3.thirdMax([2, 2, 3, 1])) # 1
-
-newTest4 = Solution()
-print(newTest4.thirdMax([2, 2, 3, 1, 4, 6, 2, 3, 7, 9, 1, 5, 7, 2]))  # 6
-
-newTest5 = Solution()
-print(newTest5.thirdMax([1, 1, 2]))  # 2
-
-newTest6 = Solution()
-print(newTest6.thirdMax([-1, 2, 3]))  # -1
+print(Solution().thirdMax([3, 2, 1]))   # 1
+print(Solution().thirdMax([1, 2]))  # 2
+print(Solution().thirdMax([2, 2, 3, 1]))    # 1
+print(Solution().thirdMax([2, 2, 3, 1, 4, 6, 2, 3, 7, 9, 1, 5, 7, 2]))  # 6
+print(Solution().thirdMax([1, 1, 2]))    # 2
+print(Solution().thirdMax([-1, 2, 3]))  # -1
