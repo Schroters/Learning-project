@@ -11,12 +11,9 @@ class Solution_first(object):
     def sortedSquares(self, nums):
         return sorted(list(map(lambda x: x*x, nums)))
 
-newTest1 = Solution_first()
-print(newTest1.sortedSquares([-4, -1, 0, 3, 10]))   # [0, 1, 9, 16, 100]
 
-newTest1 = Solution_first()
-print(newTest1.sortedSquares([-7, -3, 2, 3, 11]))       # [4, 9, 9, 49, 121]
-
+print(Solution_first().sortedSquares([-4, -1, 0, 3, 10]))     # [0, 1, 9, 16, 100]
+print(Solution_first().sortedSquares([-7, -3, 2, 3, 11]))     # [4, 9, 9, 49, 121]
 
 # second
 class Solution_second(object):
@@ -24,11 +21,8 @@ class Solution_second(object):
         return sorted([x*x for x in nums])
 
 
-newTest1 = Solution_second()
-print(newTest1.sortedSquares([-4, -1, 0, 3, 10]))   # [0, 1, 9, 16, 100]
-
-newTest1 = Solution_second()
-print(newTest1.sortedSquares([-7, -3, 2, 3, 11]))       # [4, 9, 9, 49, 121]
+print(Solution_second().sortedSquares([-4, -1, 0, 3, 10]))  # [0, 1, 9, 16, 100]
+print(Solution_second().sortedSquares([-7, -3, 2, 3, 11]))  # [4, 9, 9, 49, 121]
 
 
 # third
@@ -40,8 +34,6 @@ class Solution_third(object):
             nums[i] = nums[i]*nums[i]
         return nums
 
-newTest1 = Solution_third()
-print(newTest1.sortedSquares([-4, -1, 0, 3, 10]))   # [0, 1, 9, 16, 100]
 
-newTest1 = Solution_third()
-print(newTest1.sortedSquares([-7, -3, 2, 3, 11]))       # [4, 9, 9, 49, 121]
+print(Solution_third().sortedSquares([-4, -1, 0, 3, 10]))   # [0, 1, 9, 16, 100]
+print(Solution_third().sortedSquares([-7, -3, 2, 3, 11]))   # [4, 9, 9, 49, 121]
