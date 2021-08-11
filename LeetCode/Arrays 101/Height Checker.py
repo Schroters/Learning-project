@@ -13,11 +13,6 @@ class Solution(object):
         return cnt
 
 
-newTest1 = Solution()
-print(newTest1.heightChecker([1, 1, 4, 2, 1, 3]))    # 3
-
-newTest2 = Solution()
-print(newTest2.heightChecker([5, 1, 2, 3, 4]))    # 5
-
-newTest3 = Solution()
-print(newTest3.heightChecker([1, 2, 3, 4, 5]))    # 0
+print(Solution().heightChecker([1, 1, 4, 2, 1, 3]))     # 3
+print(Solution().heightChecker([5, 1, 2, 3, 4]))     # 5
+print(Solution().heightChecker([1, 2, 3, 4, 5]))    # 0
