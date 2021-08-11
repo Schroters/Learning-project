@@ -19,28 +19,11 @@ class Solution(object):
         return True
 
 
-
-
-newTest1 = Solution()
-print(newTest1.validMountainArray([0, 2, 3, 4, 5, 2, 1, 0]))    # True
-
-newTest2 = Solution()
-print(newTest2.validMountainArray([0, 2, 3, 3, 5, 2, 1, 0]))    # False
-
-newTest3 = Solution()
-print(newTest3.validMountainArray([2, 1]))      # False
-
-newTest4 = Solution()
-print(newTest4.validMountainArray([3, 5, 5]))   # False
-
-newTest5 = Solution()
-print(newTest5.validMountainArray([0, 3, 2, 1]))  # True
-
-newTest6 = Solution()
-print(newTest6.validMountainArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))   # False
-
-newTest7 = Solution()
-print(newTest7.validMountainArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))  # False
-
-newTest8 = Solution()
-print(newTest8.validMountainArray([1, 7, 9, 5, 4, 1, 2]))       # False
+print(Solution().validMountainArray([0, 2, 3, 4, 5, 2, 1, 0]))  # True
+print(Solution().validMountainArray([0, 2, 3, 3, 5, 2, 1, 0]))  # False
+print(Solution().validMountainArray([2, 1]))    # False
+print(Solution().validMountainArray([3, 5, 5])) # False
+print(Solution().validMountainArray([0, 3, 2, 1]))  # True
+print(Solution().validMountainArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))    # False
+print(Solution().validMountainArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))    # False
+print(Solution().validMountainArray([1, 7, 9, 5, 4, 1, 2]))     # False
