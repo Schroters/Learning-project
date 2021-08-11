@@ -16,11 +16,9 @@ class Solution_long(object):
                 disappeared.append(i)
         return disappeared
 
-newTest1 = Solution_long()
-print(newTest1.findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))  # [5, 6]
 
-newTest1 = Solution_long()
-print(newTest1.findDisappearedNumbers([1, 1]))  # [2]
+print(Solution_long().findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))   # [5, 6]
+print(Solution_long().findDisappearedNumbers([1, 1]))   # [2]
 
 
 # the second one after a while
@@ -38,11 +36,9 @@ class Solution(object):
 
         return disappeared
 
-newTest1 = Solution()
-print(newTest1.findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))  # [5, 6]
 
-newTest1 = Solution()
-print(newTest1.findDisappearedNumbers([1, 1]))  # [2]
+print(Solution().findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))  # [5, 6]
+print(Solution().findDisappearedNumbers([1, 1]))    # [2]
 
 
 # options after the submitted decision
@@ -55,8 +51,6 @@ class Solution_after(object):
                 missing.append(i)
         return missing
 
-newTest1 = Solution_after()
-print(newTest1.findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))  # [5, 6]
 
-newTest1 = Solution_after()
-print(newTest1.findDisappearedNumbers([1, 1]))  # [2]
+print(Solution_after().findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))    # [5, 6]
+print(Solution_after().findDisappearedNumbers([1, 1]))  # [2]
