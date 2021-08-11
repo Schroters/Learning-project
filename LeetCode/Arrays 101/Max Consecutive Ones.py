@@ -30,20 +30,9 @@ class Solution(object):
         return max_count
 
 
-new_test1 = Solution()
-print(new_test1.findMaxConsecutiveOnes([1, 0, 1, 1, 0, 1]))
-
-new_test2 = Solution()
-print(new_test2.findMaxConsecutiveOnes([1, 1, 0, 1, 1, 1]))
-
-new_test3 = Solution()
-print(new_test3.findMaxConsecutiveOnes([0]))
-
-new_test4 = Solution()
-print(new_test4.findMaxConsecutiveOnes([1]))
-
-new_test5 = Solution()
-print(new_test5.findMaxConsecutiveOnes([0, 0]))
-
-new_test6 = Solution()
-print(new_test6.findMaxConsecutiveOnes([]))
+print(Solution().findMaxConsecutiveOnes([1, 0, 1, 1, 0, 1]))
+print(Solution().findMaxConsecutiveOnes([1, 1, 0, 1, 1, 1]))
+print(Solution().findMaxConsecutiveOnes([0]))
+print(Solution().findMaxConsecutiveOnes([1]))
+print(Solution().findMaxConsecutiveOnes([0, 0]))
+print(Solution().findMaxConsecutiveOnes([]))
