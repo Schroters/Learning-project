@@ -14,17 +14,8 @@ class Solution(object):
         return count_even
 
 
-new_test1 = Solution()
-print(new_test1.findNumbers([12, 345, 2, 6, 7896]))
-
-new_test2 = Solution()
-print(new_test2.findNumbers([555, 901, 482, 1771]))
-
-new_test3 = Solution()
-print(new_test3.findNumbers([]))
-
-new_test4 = Solution()
-print(new_test4.findNumbers([12]))
-
-new_test5 = Solution()
-print(new_test5.findNumbers([6]))
+print(Solution().findNumbers([12, 345, 2, 6, 7896]))
+print(Solution().findNumbers([555, 901, 482, 1771]))
+print(Solution().findNumbers([]))
+print(Solution().findNumbers([12]))
+print(Solution().findNumbers([6]))
