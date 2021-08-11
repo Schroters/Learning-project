@@ -15,8 +15,5 @@ class Solution(object):
         return arr
 
 
-newTest1 = Solution()
-print(newTest1.replaceElements([17, 18, 5, 4, 6, 1]))   # [18,6,6,6,1,-1]
-
-newTest2 = Solution()
-print(newTest2.replaceElements([400]))   # [-1]
+print(Solution().replaceElements([17, 18, 5, 4, 6, 1]))     # [18,6,6,6,1,-1]
+print(Solution().replaceElements([400]))    #[-1]
