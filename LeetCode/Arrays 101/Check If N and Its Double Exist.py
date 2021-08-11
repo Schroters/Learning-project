@@ -17,17 +17,8 @@ class Solution(object):
         return False
 
 
-newTest1 = Solution()
-print(newTest1.checkIfExist([10, 2, 5, 3]))    # True
-
-newTest2 = Solution()
-print(newTest2.checkIfExist([7, 1, 14, 11]))   # True
-
-newTest3 = Solution()
-print(newTest3.checkIfExist([3, 1, 7, 11]))    # False
-
-newTest4 = Solution()
-print(newTest4.checkIfExist([-2, 0, 10, -19, 4, 6, -8]))  # False
-
-newTest5 = Solution()
-print(newTest5.checkIfExist([0, 0]))    # True
+print(Solution().checkIfExist([10, 2, 5, 3]))   # True
+print(Solution().checkIfExist([7, 1, 14, 11]))  # True
+print(Solution().checkIfExist([3, 1, 7, 11]))   # False
+print(Solution().checkIfExist([-2, 0, 10, -19, 4, 6, -8]))      # False
+print(Solution().checkIfExist([0, 0]))  # True
