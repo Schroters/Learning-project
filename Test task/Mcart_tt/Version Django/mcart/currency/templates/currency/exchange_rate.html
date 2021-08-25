@@ -1,0 +1,51 @@
+{% extends 'currency/base.html' %}
+
+{% block title %}
+Разница курса
+{% endblock %}
+
+{% block content %}
+<h4>Получение разницы курса относительно рубля между двумя датами за выбранную дату</h4>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Символ валюты</label>
+            <input type="text" name="symbolCod_curr" />
+        </p>
+        <p>
+            <label>Начальная дата</label>
+            <input type="text" name="date_to"/>
+            <label>YYYY-MM-DD</label>
+        </p>
+        <p>
+            <label>Конечная дата</label>
+            <input type="text" name="date_from" />
+            <label>YYYY-MM-DD</label>
+        </p>
+        <input type="submit" value="Узнать" >
+    </form>
+
+    {% if history.count > 0 %}
+    <h4>История запросов:</h4>
+    <table>
+        <tr>
+            <th>Размер валюты в начальную дату:
+            <th>Размер валюты в конечную дату:</th>
+            <th>Разница в ₽:</th></tr>
+        {% for query in history %}
+        <tr>
+            <td>{{ query.size_to }}</td>
+            <td>{{ query.size_from }}</td>
+            <td>{{ query.difference }}</td></tr>
+        {% endfor %}
+<!--        <tr><th>Символ валюты:</th><th>Количество валюты:</th><th>Начальная дата:</th>-->
+<!--            <th>Размер валюты в начальную дату:</th><th>Конечная дата</th>-->
+<!--            <th>Размер валюты в конечную дату:</th><th>Разница в ₽:</th></tr>-->
+<!--        {% for query in history %}-->
+<!--        <tr><td>{{ query.symbolCod_curr }}</td><td>{{ query.amountCur }}</td><td>{{ query.date_to }}</td>-->
+<!--            <td>{{ query.size_to }}</td><td>{{ query.date_from }}</td><td>{{ query.size_from }}</td>-->
+<!--            <td>{{ query.difference }}</td></tr>-->
+<!--        {% endfor %}-->
+    </table>
+    {% endif %}
+{% endblock %}

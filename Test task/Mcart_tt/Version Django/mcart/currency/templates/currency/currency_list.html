@@ -1,0 +1,14 @@
+{% extends 'currency/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2>Список валют, которые можно использовать</h2>
+    <h3>Cимвольный код (RUB, EUR), название</h3>
+    {% for symb, cure in info.items %}
+        {{ symb }}
+        {{ cure }} <br>
+    {% endfor %}
+{% endblock %}

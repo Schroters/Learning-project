@@ -1,0 +1,18 @@
+{% extends 'currency/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h2>Тестовое задание в компании Эм Си Арт</h2>
+<p>
+    Реализовать микросервис, который будет предоставлять http api,
+    для показа разницы курса той или иной валюты относительно рубля за выбранные даты.
+</p>
+<h4>Требуемые функции:</h4>
+<a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'currency_list' %}">Список доступных валют</a>
+<p>
+<a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'exchange_rate' %}">Валюта за период</a>
+</p>
+{% endblock %}
