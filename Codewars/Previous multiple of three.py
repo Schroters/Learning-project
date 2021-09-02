@@ -7,7 +7,6 @@
 
 def prev_mult_of_three(n):
     nuer = list(str(n))
-
     for i in reversed(range(len(nuer))):
         if int(''.join(nuer[:i+1])) % 3 == 0:
             return int(''.join(nuer[:i+1]))
