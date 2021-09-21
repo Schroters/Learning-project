@@ -1,8 +1,7 @@
 # Are they the "same"?
 # Function that checks whether the two arrays have the "same" elements, with the same multiplicities.
 # "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
-# Функция, которая проверяет, имеют ли два массива «одинаковые» элементы с одинаковой кратностью.
-# "То же" означает, что элементы в b - это элементы в квадрате, независимо от порядка.
+
 a1 = [121, 144, 19, 161, 19, 144, 19, 11]
 b1 = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
 a2 = [121, 144, 19, 161, 19, 144, 19, 11]
