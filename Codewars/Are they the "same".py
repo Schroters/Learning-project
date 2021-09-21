@@ -52,4 +52,3 @@ print(comp(a4, b4))
 print(comp(a5, b5))
 print(comp(a6, b6))
 print(comp(a7, b7))
-
