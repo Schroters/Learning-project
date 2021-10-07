@@ -11,9 +11,9 @@ def sublist(list_one, list_two):
     line_two = ', '.join(str(e) for e in list_two)
     if line_one == line_two:
         return EQUAL
-    elif (len(line_one) == 0) or (line_one in line_two):
+    elif line_one in line_two:
         return SUBLIST
-    elif (len(line_two) == 0) or (line_two in line_one):
+    elif line_two in line_one:
         return SUPERLIST
     else:
         return UNEQUAL
